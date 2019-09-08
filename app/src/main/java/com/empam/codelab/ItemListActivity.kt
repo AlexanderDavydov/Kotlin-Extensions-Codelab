@@ -11,6 +11,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import com.empam.codelab.dummy.DummyContent
+import com.empam.codelab.ui.detail.activity.ItemDetailActivity
+import com.empam.codelab.ui.detail.fragment.ItemDetailContract.Companion.ARG_ITEM_ID
+import com.empam.codelab.ui.detail.fragment.ItemDetailFragment
 import kotlinx.android.synthetic.main.activity_item_list.*
 import kotlinx.android.synthetic.main.item_list_content.view.*
 import kotlinx.android.synthetic.main.item_list.*
@@ -73,7 +76,7 @@ class ItemListActivity : AppCompatActivity() {
                 if (twoPane) {
                     val fragment = ItemDetailFragment().apply {
                         arguments = Bundle().apply {
-                            putString(ItemDetailFragment.ARG_ITEM_ID, item.id)
+                            putString(ARG_ITEM_ID, item.id)
                         }
                     }
                     parentActivity.supportFragmentManager
@@ -82,7 +85,7 @@ class ItemListActivity : AppCompatActivity() {
                         .commit()
                 } else {
                     val intent = Intent(v.context, ItemDetailActivity::class.java).apply {
-                        putExtra(ItemDetailFragment.ARG_ITEM_ID, item.id)
+                        putExtra(ARG_ITEM_ID, item.id)
                     }
                     v.context.startActivity(intent)
                 }
